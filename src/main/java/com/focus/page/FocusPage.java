@@ -20,9 +20,8 @@ public class FocusPage extends BasePage {
 	//Page locator
 	By spanButton = By.xpath("//span[contains(text(),'Now Hiring!')]");
 	By footerSpan = By.xpath("//span[contains(text(),'© Copyright 2019 - Focus Services ')]");
-	By spanLink = By.linkText("Locations");
+	By locationLink = By.linkText("Locations");
 	By h1Span = By.xpath("//h1[contains(text(),'CONTACT CENTERS AROUND THE GLOBE')]");
-	By aTagName = By.tagName("a");
 	By spanNorthAmerica = By.xpath("//a//span[contains(text(),'North America')]");
 	By spanCentralAmerica = By.xpath("//a//span[contains(text(),'Central America')]");
 	By spanSalvadorNica = By.xpath("//h2[contains(text(),'El Salvador & Nicaragua')]");
@@ -39,16 +38,18 @@ public class FocusPage extends BasePage {
 	}
 	
 	public Boolean isNowHiringButton() {
+		webElement.scrollIntoView(spanButton);
 		return webElement.isDisplayed(spanButton);
 	}
 	
 	public Boolean getLocationTab() {
-		webElement.scrollPageUp();
-		webElement.click(spanLink);
+		webElement.scrollIntoView(locationLink);
+		webElement.click(locationLink);
 		return webElement.isDisplayed(h1Span);
 	}
 	
 	public String getNorthAmericaUrl() {
+		webElement.scrollIntoViewNeeded(spanNorthAmerica);
 		webElement.click(spanNorthAmerica);
 		return webElement.getCurrentUrl();
 	}
@@ -58,7 +59,7 @@ public class FocusPage extends BasePage {
 		return webElement.getCurrentUrl();
 	}
 	
-	public Boolean isElSalvadorNicaraguaTitle(){
+	public Boolean isElSalvadorAndNicaragua(){
 		return webElement.isDisplayed(spanSalvadorNica);
 	}
 	
@@ -67,7 +68,7 @@ public class FocusPage extends BasePage {
 		return webElement.getCurrentUrl();
 	}
 	
-	public Boolean isBacolodCityPhilippinesBlock(){
+	public Boolean isBacolodCityAndPhilippines(){
 		return webElement.isDisplayed(h3bSpan);
 	}
 }

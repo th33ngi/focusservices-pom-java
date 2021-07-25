@@ -28,7 +28,7 @@ public class GooglePage extends BasePage{
 	}
 	
 	public GooglePage searchFocusPage(String param) {
-		webElement.sendKey(inputName, param);
+		webElement.sendKeys(inputName, param);
 		return new GooglePage(driver);
 	}
 	

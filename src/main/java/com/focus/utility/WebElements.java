@@ -12,10 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BasePage;
-
 
 public class WebElements extends BasePage{
 	JavascriptExecutor js;
@@ -25,8 +23,17 @@ public class WebElements extends BasePage{
 		super(driver);
 	}
 	
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+	
 	public WebElement getElement(By locator) {
 		return driver.findElement(locator);
+	}
+	
+	public List<WebElement> findElements(By locator){
+		List<WebElement> element = driver.findElements(locator);
+		return element;
 	}
 	
 	public void click(By locator) {
@@ -34,10 +41,6 @@ public class WebElements extends BasePage{
 	}
 	
 	public void sendKeys(By locator, String text) {
-		driver.findElement(locator).sendKeys(text);
-	}
-	
-	public void sendKey(By locator, String text) {
 		driver.findElement(locator).sendKeys(text);
 		driver.findElement(locator).sendKeys(Keys.ENTER);
 	}
@@ -59,34 +62,16 @@ public class WebElements extends BasePage{
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 	
-	public void scrollPageUp() {
-		js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
-	}
-	
 	public void scrollIntoView(By locator) {
 		js = (JavascriptExecutor) driver;
 		element = driver.findElement(locator);
-		js.executeScript("arguments[0].scrollIntoView();", element);
+		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
-	public WebElement visibilityOfElement(By locator, int timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOut);
-		return wait.until(ExpectedConditions.visibilityOf(getElement(locator)));
-	}
-	
-	public WebElement waitForElementToBeClickable(By locator, int timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOut);
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
-	}
-	
-	public String getPageTitle() {
-		return driver.getTitle();
-	}
-	
-	public List<WebElement> findElements(By locator){
-		List<WebElement> element = driver.findElements(locator);
-		return element;	
+	public void scrollIntoViewNeeded(By locator) {
+		js = (JavascriptExecutor) driver;
+		element = driver.findElement(locator);
+		js.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", element);
 	}
 	
 	public Boolean waitForElementBoolean(By locator, String text, int timeOut, int pollingTime) {

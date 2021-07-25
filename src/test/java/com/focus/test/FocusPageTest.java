@@ -33,7 +33,7 @@ public class FocusPageTest extends BaseTest {
 	@Test(priority=6, enabled=true)
 	public void navigateToLocationsTab() {
 		Boolean result = page.getInstance(FocusPage.class).getLocationTab();
-		System.out.println("Are we on Locations Tab ?: "+result);
+		System.out.println("Are we on locations tab ?: "+result);
 		Assert.assertTrue(result);
 	}
 	
@@ -52,8 +52,8 @@ public class FocusPageTest extends BaseTest {
 	}
 	
 	@Test(priority=9, enabled=true)
-	public void verifyElSalvadorNicaraguaTitle() {
-		Boolean result = page.getInstance(FocusPage.class).isElSalvadorNicaraguaTitle();
+	public void verifyElSalvadorAndNicaraguaTitle() {
+		Boolean result = page.getInstance(FocusPage.class).isElSalvadorAndNicaragua();
 		System.out.println("Is El Salvador & Nicaragua title displayed ?: "+result);
 		Assert.assertTrue(result, "El Salvador & Nicaragua");
 	}
@@ -67,8 +67,8 @@ public class FocusPageTest extends BaseTest {
 	
 	@Test(priority=10, enabled=true)
 	public void verifyBacolodCityAndPhilippinesBlock() {
-		Boolean result = page.getInstance(FocusPage.class).isBacolodCityPhilippinesBlock();
-		System.out.println("Is Bacolod City, Philippines Block displayed ?: "+result);
+		Boolean result = page.getInstance(FocusPage.class).isBacolodCityAndPhilippines();
+		System.out.println("Is Bacolod City & Philippines Block displayed ?: "+result);
 		Assert.assertTrue(result);
 	}
 }
