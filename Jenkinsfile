@@ -1,14 +1,10 @@
 #!groovy
 
 pipeline {
-    environment {
-        JAVA_TOOL_OPTIONS = "-Duser.home=/home/jenkins"
-    }
-    agent {
-        dockerfile {
-            label "docker"
-            args "-v /tmp/maven:/home/jenkins/.m2 -e MAVEN_CONFIG=/home/jenkins/.m2"
-        }
+    agent any
+
+    tools {
+        maven "3.6.0"
     }
 
     stages {
