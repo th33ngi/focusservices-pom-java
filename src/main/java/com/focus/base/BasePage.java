@@ -8,10 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import com.focus.listener.WebEventListener;
+//import com.focus.listener.WebEventListener;
 import com.focus.page.Page;
 import com.focus.utility.OptionsManager;
 
@@ -19,8 +19,8 @@ public class BasePage extends Page {
 	public Properties prop;
 	public static WebDriver driver;
 	public OptionsManager optionsManager;
-	public static EventFiringWebDriver eventDriver;
-	public static WebEventListener eventListener;
+	//public static EventFiringWebDriver eventDriver;
+	//public static WebEventListener eventListener;
 	
 	//a base page constructor is created
 	public BasePage(WebDriver driver) {
@@ -34,16 +34,17 @@ public class BasePage extends Page {
 			optionsManager = new OptionsManager(prop);
 			System.setProperty("webdriver.chrome.driver","./src/test/resources/chrome/chromedriver");
 			driver = new ChromeDriver(optionsManager.getChromeOptions());
-		}else if(browserName.equals("firefox")) {
+		}
+		/*else if(browserName.equals("firefox")) {
 			optionsManager = new OptionsManager(prop);
 			System.setProperty("webdriver.gecko.driver","./src/test/resources/firefox/geckodriver.exe");
 			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
-		}
+		}*/
 		
-		eventDriver = new EventFiringWebDriver(driver);
-		eventListener = new WebEventListener();
-		eventDriver.register(eventListener);
-		driver = eventDriver;
+		//eventDriver = new EventFiringWebDriver(driver);
+		//eventListener = new WebEventListener();
+		//eventDriver.register(eventListener);
+		//driver = eventDriver;
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
