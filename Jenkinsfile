@@ -14,6 +14,14 @@ pipeline {
                 sh "mvn clean install"
             }
         }
+        
+        stage("Tests Execution") {
+            steps {
+            	script {
+            		sh 'chmod +x /var/jenkins_home/workpace/maven-pipeline/./src/test/resources/chrome/chromedriver'
+            	}
+            }
+        }
     }
 
     post {
