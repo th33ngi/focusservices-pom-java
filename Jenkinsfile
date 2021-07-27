@@ -3,8 +3,8 @@ pipeline {
 	stages {
 		stage ("Build") {
 			steps {
-				sh "mvn -version"
-				sh "mvn clean install"
+				sh "nvm -version"
+				sh "nvm clean install"
 			}
 		}
 	}
