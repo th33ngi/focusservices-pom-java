@@ -32,7 +32,7 @@ public class BasePage extends Page {
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
 			optionsManager = new OptionsManager(prop);
-			System.setProperty("webdriver.chrome.driver","src/test/java/chrome/chromedriver");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver");
 			driver = new ChromeDriver(optionsManager.getChromeOptions());
 		}
 		/*else if(browserName.equals("firefox")) {
