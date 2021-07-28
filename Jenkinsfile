@@ -6,16 +6,19 @@ pipeline {
     }
 	    
     stages {
-        stage ('Compile Stage') {
+        stage ('Build Stage') {
             steps {
             	sh "mvn -version"
             	sh "mvn clean compile"
             }
         }
         
-        stage ('Testing Stage') {
+        stage ('Test Stage') {
             steps {
             	sh "mvn test"
+            	script {
+                	sh 'chmod +x /var/jenkins_home/workspace/maven-pipeline/./src/test/resources/chrome/chromedriver'
+                }
             }
         }
     }
