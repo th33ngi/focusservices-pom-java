@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage ('Compile Stage') {
             steps {
-            	sh 'mvn -version'
-            	sh 'mvn clean compile'
+            	sh "mvn -version"
+            	sh "mvn clean compile"
             }
         }
         
         stage ('Testing Stage') {
             steps {
-            	sh 'mvn test'
+            	sh "mvn test"
             }
         }
     }
