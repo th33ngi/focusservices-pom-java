@@ -19,6 +19,7 @@ public class OptionsManager {
 	
 	public ChromeOptions getChromeOptions() {
 		chromeOptions = new ChromeOptions();
+		chromeOptions.setHeadless(true);
 			HashMap <String, Object> chromePrefs = new HashMap <String, Object>();
 			chromePrefs.put("plugins.always_open_pdf_externally", true);
 			//chromePrefs.put("download.default_directory", prop.getProperty("downloadpath"));

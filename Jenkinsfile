@@ -16,9 +16,7 @@ pipeline {
         stage ('Test Stage') {
             steps {
             	sh "mvn test"
-            	script {
-                	sh 'chmod +x -v C:/Users/Th33NGi/jenkins_home:/var/jenkins_home/workspace/.src/test/java/chrome/chromedriver'
-                }
+            	sh 'chmod ??? $WORKSPACE/src/test/resources/chrome/chromedriver'
             }
         }
     }
