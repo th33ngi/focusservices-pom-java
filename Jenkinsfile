@@ -17,7 +17,7 @@ pipeline {
             steps {
             	sh "mvn test"
             	script {
-                	sh 'chmod +x /var/jenkins_home/workspace/maven-pipeline/./src/test/java/chrome/chromedriver'
+                	sh 'chmod +x /var/jenkins_home/workspace/maven-pipeline@script/src/test/java/chrome/chromedriver'
                 }
             }
         }
