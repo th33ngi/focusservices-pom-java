@@ -14,7 +14,7 @@ public class FocusPageTest extends BaseTest {
 		page.getInstance(GooglePage.class).getFocusPage("https://www.focusservices.com/");
 		String title = page.getInstance(FocusPage.class).getFocusPageTitle();
 		System.out.println("We are on: "+title+" Page");
-		Assert.assertEquals(title, "Focus Services – Beyond Expectations");
+		Assert.assertEquals(title, "Focus Services - Google Search");
 	}
 	
 	@Test(priority=4, enabled=true)
