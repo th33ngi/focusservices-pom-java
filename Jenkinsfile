@@ -12,18 +12,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                //bat 'mvn -B -DskipTests clean package' -->
-                bat 'mvn verify'
+                bat 'mvn -B -DskipTests clean install'
             }
         }
         stage('Test') { 
             steps {
                 bat 'mvn test' 
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
-                }
             }
         }
          stage('Deploy') { 
