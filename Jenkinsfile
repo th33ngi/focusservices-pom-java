@@ -27,7 +27,7 @@ pipeline {
         }
          stage('Deploy') { 
             steps {
-               	bat 'mvn test' 
+               	bat './mvnw clean deploy'
             }
         }
     }
