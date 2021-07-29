@@ -6,7 +6,9 @@ pipeline {
     tools {
         maven "3.6.0"
     }
-
+	options {
+        skipStagesAfterUnstable()
+    }
     stages {
         stage('Build') {
             steps {
@@ -21,6 +23,11 @@ pipeline {
                 always {
                     junit 'target/surefire-reports/*.xml' 
                 }
+            }
+        }
+         stage('Deploy') { 
+            steps {
+               	bat 'mvn test' 
             }
         }
     }
