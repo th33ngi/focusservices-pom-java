@@ -79,7 +79,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>https://hub.docker.com/repository/docker/th33ngi/jenkins_deploys</url>
+         <url>https://github.com/th33ngi/jenkins_deployments</url>
        </repository>
    </distributionManagement>
 </project>

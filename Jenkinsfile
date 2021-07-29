@@ -22,7 +22,7 @@ pipeline {
         }
          stage('Deploy') { 
             steps {
-               	bat 'mvn deploy -DaltDeploymentRepository=internal.repo::default::https://hub.docker.com/repository/docker/th33ngi/jenkins_deploys'
+               	bat 'mvn deploy -DaltDeploymentRepository=internal.repo::default::https://github.com/th33ngi/jenkins_deployments'
             }
         }
     }
