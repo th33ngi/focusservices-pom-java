@@ -22,7 +22,7 @@ pipeline {
         }
          stage('Deploy') { 
             steps {
-               	bat 'mvn deploy'
+               	bat 'mvn -B -DskipTests clean deploy'
             }
         }
     }
