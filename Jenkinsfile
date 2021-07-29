@@ -15,7 +15,7 @@ pipeline {
         }
         stage("Test Stage") {
             steps {
-                bat "./test/java/testng.xml"
+                bat "mvn clean test"
             }
         }
     }
