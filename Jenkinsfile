@@ -14,11 +14,6 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-        stage("Test Stage") {
-            steps {
-                sh "mvn clean compile test"
-            }
-        }
     }
 
     post {
