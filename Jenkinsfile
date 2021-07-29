@@ -10,8 +10,12 @@ pipeline {
     stages {
         stage("Build Stage") {
             steps {
-                bat "mvn -version"
                 bat "mvn clean install"
+            }
+        }
+        stage("Test Stage") {
+            steps {
+                bat "./test/java/testng.xml"
             }
         }
     }
