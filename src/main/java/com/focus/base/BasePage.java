@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 //import com.focus.listener.WebEventListener;
@@ -30,16 +30,22 @@ public class BasePage extends Page {
 	//start the web driver
 	public WebDriver initDriver (Properties prop) {
 		String browserName = prop.getProperty("browser");
-		if(browserName.equals("chrome")) {
+		String osName = prop.getProperty("os");
+		if (browserName.equals("chrome")) {
+			if (osName.equals("win")) {
+				optionsManager = new OptionsManager(prop);
+				System.setProperty("webdriver.chrome.driver", "./src/test/resources/win/chromedriver.exe");
+				driver = new ChromeDriver(optionsManager.getChromeOptions());
+			} else {
+				optionsManager = new OptionsManager(prop);
+				System.setProperty("webdriver.chrome.driver", "./src/test/resources/linux/chromedriver");
+				driver = new ChromeDriver(optionsManager.getChromeOptions());
+			}
+		} else if(browserName.equals("firefox")) {
 			optionsManager = new OptionsManager(prop);
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chrome/chromedriver");
-			driver = new ChromeDriver(optionsManager.getChromeOptions());
-		}
-		/*else if(browserName.equals("firefox")) {
-			optionsManager = new OptionsManager(prop);
-			System.setProperty("webdriver.gecko.driver","./src/test/resources/firefox/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver","./src/test/resources/win/geckodriver.exe");
 			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
-		}*/
+		}
 		
 		//eventDriver = new EventFiringWebDriver(driver);
 		//eventListener = new WebEventListener();
