@@ -12,7 +12,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn -B -DskipTests clean package'
+                //bat 'mvn -B -DskipTests clean package' -->
+                bat 'mvn verify'
             }
         }
         stage('Test') { 
@@ -27,8 +28,20 @@ pipeline {
         }
          stage('Deploy') { 
             steps {
-               	bat './mvnw clean deploy'
+               	bat 'mvn deploy'
             }
         }
     }
+    post {
+    	success {
+      		mail to: "th33ngi@gmail.com", 
+      		subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+      		body: "Test execution has passed."
+    	}
+    	failure {
+      		mail to: "th33ngi@gmail.com", 
+      		subject:"FAILURE: ${currentBuild.fullDisplayName}", 
+      		body: "Test execution has passed."
+    	}
+  }
 }
