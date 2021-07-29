@@ -22,7 +22,7 @@ pipeline {
         }
          stage('Deploy') { 
             steps {
-               	bat 'mvn -B -DskipTests clean deploy'
+               	bat 'mvn -B -DskipTests deploy -DaltDeploymentRepository=internal.repo::default::file:///C:/Users/Th33NGi/Documents/jenkins_deployments'
             }
         }
     }
