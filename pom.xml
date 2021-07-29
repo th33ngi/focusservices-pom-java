@@ -79,7 +79,7 @@
        <repository>
          <id>internal.repo</id>
          <name>Internal repo</name>
-         <url>https://github.com/th33ngi/jenkins_deployments</url>
+         <url>file:///C:/Users/Th33NGi/Documents/jenkins_deployments</url>
        </repository>
    </distributionManagement>
 </project>
